@@ -3,6 +3,8 @@ A rapid template Rails (5.2 +) application template for personal use. This parti
 
 Tailwind depends on Webpack so this also comes bundled with [webpacker](https://github.com/rails/webpacker) support.
 
+Inspired heavily by [Jumpstart](https://github.com/excid3/jumpstart) from [Chris Oliver](https://twitter.com/excid3/). Credits to him for a bunch here.
+
 ### Included gems
 
 - [devise](https://github.com/plataformatec/devise)
