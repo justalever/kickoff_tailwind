@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= Rails.configuration.application_name %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag  'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+ <body class="bg-white">
+
+  <% flash.each do |type, message| %>
+    <% if type == "alert" %>
+      <div class="bg-red-light">
+        <div class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans"><%= message %></div>
+      </div>
+    <% end %>
+    <% if type == "notice" %>
+      <div class="bg-green-light">
+        <div class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans"><%= message %></div>
+      </div>
+    <% end %>
+  <% end %>
+
+    <header class="mb-4">
+      <nav class="flex items-center justify-between flex-wrap bg-grey-lightest p-4 text-grey-darker border-b border-grey-light">
+        <div class="flex items-center flex-no-shrink mr-6">
+          <%= link_to Rails.configuration.application_name, root_path, class:"link text-xl tracking-tight font-semibold" %>
+        </div>
+        <div class="block lg:hidden">
+          <button class="flex items-center px-3 py-2 border rounded text-grey border-grey hover:text-grey-dark hover:border-grey-dark">
+            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+          </button>
+        </div>
+        <div class="w-full block lg:flex-1 lg:flex items-center text-center lg:text-left">
+          <div class="lg:flex-grow">
+            <%= link_to "Basic Link", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
+          </div>
+          <div class="w-full block lg:flex lg:flex-row lg:flex-1 mt-2 lg:mt-0 text-center lg:text-left lg:justify-end">
+            <%= link_to "Login", new_user_session_path, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
+            <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default block" %>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="lg:px-10 px-4">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </main>
+  </body>
+</html>

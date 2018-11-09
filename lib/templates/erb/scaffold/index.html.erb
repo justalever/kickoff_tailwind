@@ -1,0 +1,49 @@
+<% name_attribute = attributes.find{ |a| a.name == "name" } %>
+<% has_name = !!name_attribute %>
+
+<div class="flex">
+  <div class="w-1/2">
+    <h1 class="text-2xl"><%= plural_table_name.capitalize %></h1>
+  </div>
+
+  <div class="w-1/2 text-right">
+  <%%= link_to new_<%= singular_table_name %>_path, class: 'bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded' do %>
+    Add New <%= human_name %>
+  <%% end %>
+  </div>
+</div>
+
+<table class="border-collapse w-full mw-full mb-1 bg-transparent">
+  <thead>
+    <tr>
+  <% if has_name %>
+      <th>Name</th>
+  <% end %>
+
+  <% attributes.without(name_attribute).each do |attribute| -%>
+      <th><%= attribute.human_name %></th>
+  <% end -%>
+      <% unless has_name %>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%% @<%= plural_table_name%>.each do |<%= singular_table_name %>| %>
+      <%%= content_tag :tr, id: dom_id(<%= singular_table_name %>), class: dom_class(<%= singular_table_name %>) do %>
+        <% if has_name %>
+          <td><%%= link_to <%= singular_table_name %>.name, <%= singular_table_name %> %></td>
+        <% end %>
+
+        <% attributes.without(name_attribute).each do |attribute| -%>
+          <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+        <% end -%>
+
+        <% unless has_name %>
+          <td><%%= link_to 'Show', <%= singular_table_name %> %></td>
+        <% end %>
+      <%% end %>
+    <%% end %>
+  </tbody>
+</table>

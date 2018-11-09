@@ -1,0 +1,22 @@
+/* Buttons */
+
+.btn {
+  @apply font-semibold text-sm py-2 px-4 rounded cursor-pointer no-underline;
+}
+
+.btn-default {
+  box-shadow: 0 1px 2px rgba(#444444, 0.1);
+  @apply bg-white border border-grey-light text-grey-darker;
+
+  &:hover, &:focus {
+    @apply bg-grey-lightest shadow-none;
+  }
+}
+
+.link {
+  @apply no-underline text-grey-darker;
+
+  &:hover, &:focus {
+    @apply text-grey-dark;
+  }
+}
