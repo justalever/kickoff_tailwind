@@ -25,7 +25,7 @@ def set_application_name
   # Ask user for application name
   application_name = ask("What is the name of your application? Default: Kickoff")
 
-  # Checks if application name is empty and add default Jumpstart.
+  # Checks if application name is empty and add default Kickoff.
   application_name = application_name.present? ? application_name : "Kickoff"
 
   # Add Application Name to Config
@@ -88,10 +88,6 @@ def add_sidekiq
   insert_into_file "config/routes.rb",
     "require 'sidekiq/web'\n\n",
     before: "Rails.application.routes.draw do"
-
-  insert_into_file "config/routes.rb",
-    "  authenticate :user, lambda { |u| u.admin? } do\n    mount Sidekiq::Web => '/sidekiq'\n  end\n\n",
-    after: "Rails.application.routes.draw do\n"
 end
 
 def add_foreman
