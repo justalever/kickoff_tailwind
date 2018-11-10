@@ -64,7 +64,6 @@ end
 
 def add_tailwind
   run "yarn --ignore-engines add tailwindcss"
-  run "./node_modules/.bin/tailwind init app/javascript/css/tailwind.js"
   run "mkdir app/javascript/stylesheets"
   run "./node_modules/.bin/tailwind init app/javascript/stylesheets/tailwind.js"
   append_to_file "app/javascript/packs/application.js", 'import "stylesheets/application"'
