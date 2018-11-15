@@ -1,5 +1,5 @@
 # Rails Kickoff – Tailwind
-A rapid template Rails (5.2 +) application template for personal use. This particular template utilizes [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework for rapid UI development.
+A rapid Rails (5.2 +) application template for personal use. This particular template utilizes [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework for rapid UI development.
 
 Tailwind depends on Webpack so this also comes bundled with [webpacker](https://github.com/rails/webpacker) support.
 
