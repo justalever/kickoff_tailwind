@@ -39,3 +39,8 @@ $ rails new sample_app -d <postgresql, mysql, sqlite> -m template.rb
 To utilize foreman with sidekiq noted above you'll need to install redis. The gem comes within a new rails application but it is commented out. Uncomment that line and run `bundle install`. It also might be handy to install redis on your machine (assuming you're on a mac) run `brew install redis` to install it. Then in a new terminal instance you can run `redis-server`.
 
 After that is running, open a new terminal instance and finally run `foreman start`. Head to `locahost:5000` to see your app. You'll have hot reloading on `js` and `css` and `scss/sass` files by default. Feel free to configure to look for more to compile reload as your app scales.
+
+
+### Watch an overview
+
+ 📹 [https://youtu.be/kuKMRl8nj2w](https://youtu.be/kuKMRl8nj2w)
