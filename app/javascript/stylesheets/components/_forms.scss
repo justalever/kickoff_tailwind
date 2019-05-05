@@ -1,22 +1,22 @@
 /* Forms */
 .input {
-  @apply appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight;
+  @apply appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight;
 }
 
 .input:focus {
-  @apply outline-none bg-white border-grey;
+  @apply outline-none bg-white border-gray-400;
 }
 
 .label {
-  @apply block text-grey-darker text-sm font-semibold mb-2;
+  @apply block text-gray-700 text-sm font-bold mb-2;
 }
 
 .select {
-  @apply appearance-none py-3 px-4 pr-8 block w-full bg-grey-lighter border border-grey-lighter text-grey-darker
+  @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-100 border border-gray-300 text-gray-700
    rounded leading-tight;
    -webkit-appearance: none;
 }
 
 .select:focus {
-  @apply outline-none bg-white border-grey;
+  @apply outline-none bg-white border-gray-400;
 }

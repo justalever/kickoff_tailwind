@@ -3,7 +3,7 @@
   <h2 class="heading text-4xl font-bold pt-4 mb-8">Resend confirmation instructions</h2>
 
   <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-    <%= devise_error_messages! %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="mb-6">
       <%= f.label :email, class: "label" %>
