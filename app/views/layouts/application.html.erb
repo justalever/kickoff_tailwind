@@ -43,8 +43,13 @@
             <%= link_to "Basic Link", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
           </div>
           <div class="w-full block lg:flex lg:flex-row lg:flex-1 mt-2 lg:mt-0 text-center lg:text-left lg:justify-end">
-            <%= link_to "Login", new_user_session_path, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
-            <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default block" %>
+            <% if (!user_signed_in?) %>
+              <%= link_to "Login", new_user_session_path, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
+              <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default block" %>
+            <% else %>
+              <h3 class="semibold text-l px-2 py-2">Welcome</h3>
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete , class:"btn btn-default block" %>
+            <% end %>
           </div>
         </div>
       </nav>
