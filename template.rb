@@ -44,7 +44,7 @@ end
 
 def add_tailwind
   # beta version for now
-  run "yarn add tailwindcss@next"
+  run "yarn add tailwindcss"
   run "mkdir app/javascript/stylesheets"
   append_to_file("app/javascript/packs/application.js", 'import "stylesheets/application"')
   inject_into_file("./postcss.config.js",
