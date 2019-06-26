@@ -1,6 +1,8 @@
 # Rails Kickoff – Tailwind
 A rapid Rails (6.0.0.r1) application template for personal use. This particular template utilizes [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework for rapid UI development.
 
+Need version 5.2.3 support? [Check out this branch](https://github.com/justalever/kickoff_tailwind/tree/rails5-2)
+
 Tailwind depends on Webpack so this also comes bundled with [webpacker](https://github.com/rails/webpacker) support.
 
 Inspired heavily by [Jumpstart](https://github.com/excid3/jumpstart) from [Chris Oliver](https://twitter.com/excid3/). Credits to him for a bunch here.
