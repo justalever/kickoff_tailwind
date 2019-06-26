@@ -1,5 +1,5 @@
 =begin
-Template Name: Kickstart application template - Tailwind CSS
+Template Name: Kickstart application template - Tailwind CSS - Rails 5.2.3
 Author: Andy Leverenz
 Author URI: https://web-crunch.com
 Instructions: $ rails new myapp -d <postgresql, mysql, sqlite> -m template.rb
@@ -10,12 +10,29 @@ def source_paths
 end
 
 def add_gems
-  gem 'devise', '~> 4.6', '>= 4.6.2'
-  gem 'friendly_id', '~> 5.2', '>= 5.2.5'
-  gem 'sidekiq', '~> 5.2', '>= 5.2.7'
+  gem 'devise', '~> 4.4', '>= 4.4.3'
+  gem 'friendly_id', '~> 5.2', '>= 5.2.4'
+  gem 'foreman', '~> 0.84.0'
+  gem 'sidekiq', '~> 5.1', '>= 5.1.3'
+  gem 'tailwindcss', '~> 0.2.0'
+  gem 'webpacker', '~> 4.0', '>= 4.0.7'
   gem_group :development, :test do
     gem 'better_errors'
   end
+end
+
+def set_application_name
+  # Ask user for application name
+  application_name = ask("What is the name of your application? Default: Kickoff")
+
+  # Checks if application name is empty and add default Kickoff.
+  application_name = application_name.present? ? application_name : "Kickoff"
+
+  # Add Application Name to Config
+  environment "config.application_name = '#{application_name}'"
+
+  # Announce the user where he can change the application name in the future.
+  puts "Your application name is #{application_name}. You can change this later on: ./config/application.rb"
 end
 
 def add_users
@@ -38,13 +55,16 @@ def add_users
   end
 end
 
+def add_webpack
+  rails_command "webpacker:install"
+end
+
 def copy_templates
   directory "app", force: true
 end
 
 def add_tailwind
-  # beta version for now
-  run "yarn add tailwindcss@next"
+  run "yarn add tailwindcss"
   run "mkdir app/javascript/stylesheets"
   append_to_file("app/javascript/packs/application.js", 'import "stylesheets/application"')
   inject_into_file("./postcss.config.js",
@@ -97,8 +117,10 @@ source_paths
 add_gems
 
 after_bundle do
+  set_application_name
   stop_spring
   add_users
+  add_webpack
   remove_app_css
   add_sidekiq
   add_foreman
@@ -115,7 +137,7 @@ after_bundle do
   git commit: %Q{ -m "Initial commit" }
 
   say
-  say "Kickoff app successfully created! 👍", :green
+  say "#{app_name} successfully created! 👍", :green
   say
   say "Switch to your app by running:"
   say "$ cd #{app_name}", :yellow

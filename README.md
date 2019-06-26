@@ -1,5 +1,5 @@
 # Rails Kickoff – Tailwind
-A rapid Rails (6.0.0.r1) application template for personal use. This particular template utilizes [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework for rapid UI development.
+A rapid Rails (5.2.3) application template for personal use. This particular template utilizes [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework for rapid UI development.
 
 Tailwind depends on Webpack so this also comes bundled with [webpacker](https://github.com/rails/webpacker) support.
 
@@ -12,9 +12,10 @@ Be sure to also check out [Jumpstart Pro](https://jumpstartrails.com) to save lo
 - [devise](https://github.com/plataformatec/devise)
 - [friendly_id](https://github.com/norman/friendly_id)
 - [sidekiq](https://github.com/mperham/sidekiq)
+- [webpacker](https://github.com/rails/webpacker)
 
 ### Tailwind CSS by default
-With Rails 6 we have webpacker by default now. Using PostCSS we can install Tailwind as a base CSS framework to harness. I prefer Tailwind due to it's un-opinionated approach.
+Using PostCSS we can install Tailwind as a base CSS framework to harness. I prefer Tailwind due to it's un-opinionated approach.
 
 ## How it works
 
