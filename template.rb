@@ -10,7 +10,7 @@ def source_paths
 end
 
 def add_gems
-  gem 'devise', '~> 4.6', '>= 4.6.2'
+  gem 'devise', git: 'https://github.com/plataformatec/devise'
   gem 'friendly_id', '~> 5.2', '>= 5.2.5'
   gem 'sidekiq', '~> 5.2', '>= 5.2.7'
   gem_group :development, :test do
