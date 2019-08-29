@@ -10,12 +10,9 @@ def source_paths
 end
 
 def add_gems
-  gem 'devise', git: 'https://github.com/plataformatec/devise'
+  gem 'devise', '~> 4.7'
   gem 'friendly_id', '~> 5.2', '>= 5.2.5'
   gem 'sidekiq', '~> 5.2', '>= 5.2.7'
-  gem_group :development, :test do
-    gem 'better_errors'
-  end
 end
 
 def add_users
@@ -44,7 +41,7 @@ end
 
 def add_tailwind
   # beta version for now
-  run "yarn add tailwindcss@next"
+  run "yarn add tailwindcss"
   run "mkdir app/javascript/stylesheets"
   append_to_file("app/javascript/packs/application.js", 'import "stylesheets/application"')
   inject_into_file("./postcss.config.js",
