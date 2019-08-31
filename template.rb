@@ -40,7 +40,6 @@ def copy_templates
 end
 
 def add_tailwind
-  # beta version for now
   run "yarn add tailwindcss"
   run "mkdir app/javascript/stylesheets"
   append_to_file("app/javascript/packs/application.js", 'import "stylesheets/application"')
