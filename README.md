@@ -1,5 +1,5 @@
 # Rails Kickoff – Tailwind
-A rapid Rails (6.0.0.r1) application template for personal use. This particular template utilizes [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework for rapid UI development.
+A rapid Rails (6.0.0) application template for personal use. This particular template utilizes [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework for rapid UI development.
 
 Need version 5.2.3 support? [Check out this branch](https://github.com/justalever/kickoff_tailwind/tree/rails5-2)
 
@@ -46,4 +46,4 @@ After that is running, open a new terminal instance and finally run `foreman sta
 
 ### Watch an overview
 
- 📹 [https://youtu.be/kuKMRl8nj2w](https://youtu.be/kuKMRl8nj2w) - A bit dated now that Rails 6.0.0.rc1 is out now.
+ 📹 [https://youtu.be/kuKMRl8nj2w](https://youtu.be/kuKMRl8nj2w) - A bit dated now that Rails 6.0.0 is out now.
