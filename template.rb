@@ -10,9 +10,9 @@ def source_paths
 end
 
 def add_gems
-  gem 'devise', '~> 4.7'
-  gem 'friendly_id', '~> 5.2', '>= 5.2.5'
-  gem 'sidekiq', '~> 5.2', '>= 5.2.7'
+  gem 'devise', '~> 4.7', '>= 4.7.1'
+  gem 'friendly_id', '~> 5.3'
+  gem 'sidekiq', '~> 6.0', '>= 6.0.1'
 end
 
 def add_users
@@ -75,16 +75,6 @@ end
 
 def add_friendly_id
   generate "friendly_id"
-
-  insert_into_file(
-    Dir["db/migrate/**/*friendly_id_slugs.rb"].first,
-    "[5.2]",
-    after: "ActiveRecord::Migration"
-  )
-end
-
-def stop_spring
-  run "spring stop"
 end
 
 # Main setup
@@ -93,7 +83,6 @@ source_paths
 add_gems
 
 after_bundle do
-  stop_spring
   add_users
   remove_app_css
   add_sidekiq
