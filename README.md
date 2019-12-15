@@ -25,7 +25,7 @@ When creating a new rails app simply pass the template file through.
 ### Creating a new app
 
 ```bash
-$ rails new sample_app -d <postgresql, mysql, sqlite> -m template.rb
+$ rails new sample_app -d <postgresql, mysql, sqlite3> -m template.rb
 ```
 
 ### Once installed what do I get?
