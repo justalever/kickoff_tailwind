@@ -44,13 +44,13 @@ end
 
 def add_tailwind
   # beta version for now
-  run "yarn add tailwindcss@next"
-  run "mkdir app/javascript/stylesheets"
+  run "yarn add tailwindcss"
+  run "mkdir -p app/javascript/stylesheets"
   append_to_file("app/javascript/packs/application.js", 'import "stylesheets/application"')
   inject_into_file("./postcss.config.js",
   "var tailwindcss = require('tailwindcss');\n",  before: "module.exports")
   inject_into_file("./postcss.config.js", "\n    tailwindcss('./app/javascript/stylesheets/tailwind.config.js'),", after: "plugins: [")
-  run "mkdir app/javascript/stylesheets/components"
+  run "mkdir -p app/javascript/stylesheets/components"
 end
 
 # Remove Application CSS
