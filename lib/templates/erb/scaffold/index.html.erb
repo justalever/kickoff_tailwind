@@ -1,19 +1,19 @@
 <% name_attribute = attributes.find{ |a| a.name == "name" } %>
 <% has_name = !!name_attribute %>
 
-<div class="flex">
-  <div class="w-1/2">
+<div class="flex flex-wrap items-center justify-between">
+  <div class="w-full lg:w-1/2">
     <h1 class="text-2xl"><%= plural_table_name.capitalize %></h1>
   </div>
 
-  <div class="w-1/2 text-right">
-  <%%= link_to new_<%= singular_table_name %>_path, class: 'bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded' do %>
+  <div class="w-full lg:w-1/2 lg:text-right">
+  <%%= link_to new_<%= singular_table_name %>_path, class: 'bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded' do %>
     Add New <%= human_name %>
   <%% end %>
   </div>
 </div>
 
-<table class="border-collapse w-full mw-full mb-1 bg-transparent">
+<table class="w-full max-w-full mb-1 bg-transparent border-collapse">
   <thead>
     <tr>
   <% if has_name %>

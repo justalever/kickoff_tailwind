@@ -25,7 +25,7 @@ When creating a new rails app simply pass the template file through.
 ### Creating a new app
 
 ```bash
-$ rails new sample_app -d <postgresql, mysql, sqlite> -m template.rb
+$ rails new sample_app -d <postgresql, mysql, sqlite3> -m template.rb
 ```
 
 ### Once installed what do I get?
@@ -46,4 +46,4 @@ After that is running, open a new terminal instance and finally run `foreman sta
 
 ### Watch an overview
 
- 📹 [https://youtu.be/kuKMRl8nj2w](https://youtu.be/kuKMRl8nj2w) - A bit dated now that Rails 6.0.0 is out now.
+ 📹 [https://youtu.be/kuKMRl8nj2w](https://youtu.be/kuKMRl8nj2w) - A bit dated now that Rails 6 is out now.
