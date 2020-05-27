@@ -1,8 +1,8 @@
 =begin
-Template Name: Kickstart application template - Tailwind CSS
+Template Name: Kickoff - Tailwind CSS
 Author: Andy Leverenz
 Author URI: https://web-crunch.com
-Instructions: $ rails new myapp -d <postgresql, mysql, sqlite> -m template.rb
+Instructions: $ rails new myapp -d <postgresql, mysql, sqlite3> -m template.rb
 =end
 
 def source_paths
@@ -41,12 +41,12 @@ end
 
 def add_tailwind
   run "yarn add tailwindcss"
-  #run "mkdir app/javascript/stylesheets"
+  run "mkdir -p app/javascript/stylesheets"
   append_to_file("app/javascript/packs/application.js", 'import "stylesheets/application"')
   inject_into_file("./postcss.config.js",
   "var tailwindcss = require('tailwindcss');\n",  before: "module.exports")
   inject_into_file("./postcss.config.js", "\n    tailwindcss('./app/javascript/stylesheets/tailwind.config.js'),", after: "plugins: [")
-  #run "mkdir app/javascript/stylesheets/components"
+  run "mkdir -p app/javascript/stylesheets/components"
 end
 
 # Remove Application CSS
