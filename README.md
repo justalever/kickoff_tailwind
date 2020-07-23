@@ -36,6 +36,8 @@ $ rails new sample_app -d <postgresql, mysql, sqlite3> -m template.rb
 - Optional Foreman support thanks to a `Procfile`. Once you scaffold the template, run `foreman start` to initalize and head to `locahost:5000` to get `rails server`, `sidekiq` and `bin/webpack-dev-server` running all in one terminal instance. Note: Webpack will still compile down with just `rails server` if you don't want to use Foreman. Foreman needs to be installed as a global gem on your system for this to work. i.e. `gem install foreman`
 - A custom scaffold view template when generating theme resources (Work in progress).
 - Git initialization out of the box
+- PurgeCSS configuration to help with CSS file sizes 
+- Custom defaults for button and form elements
 
 ### Boot it up
 
