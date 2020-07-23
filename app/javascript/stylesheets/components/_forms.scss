@@ -1,10 +1,19 @@
-/* Forms */
-.input {
-  @apply appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight;
+%focus-style {
+  @apply shadow outline-none border-gray-500;
+
+  box-shadow: 0 0 0 0.2rem theme("colors.gray.200");
+  background-clip: padding-box;
 }
 
-.input:focus {
-  @apply outline-none bg-white border-gray-400;
+.input {
+  @apply appearance-none block w-full text-gray-700 border border-gray-400 rounded px-3 leading-tight bg-white shadow-inner;
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+}
+
+.input:focus,
+.input:hover {
+  @extend %focus-style;
 }
 
 .label {
@@ -12,11 +21,136 @@
 }
 
 .select {
-  @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-100 border border-gray-300 text-gray-700
-   rounded leading-tight;
-   -webkit-appearance: none;
+  @apply appearance-none py-3 px-4 pr-8 block w-full bg-white border border-gray-300 text-gray-700 rounded leading-tight;
+  -webkit-appearance: none;
+
 }
 
 .select:focus {
-  @apply outline-none bg-white border-gray-400;
+  @apply outline-none border-gray-400;
+
+  box-shadow: 0 0 0 0.2rem theme("colors.gray.100");
+  background-clip: padding-box;
+}
+
+.caret {
+  @apply pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-800;
+}
+
+.input-group {
+  @apply mb-6;
+}
+
+.input-file {
+    height: auto;
+    z-index: 2;
+    cursor: pointer;
+
+    @apply inline-block opacity-0 pl-0 pr-0 py-3 px-3 overflow-hidden absolute border-none;
+
+    + label {
+      @extend .btn;
+      @extend .btn-default;
+
+      @apply cursor-pointer inline-flex items-center justify-start w-auto;
+
+      * {
+        pointer-events: none;
+      }
+
+      &:focus {
+        outline: 1px dotted #000;
+        outline: -webkit-focus-ring-color auto 5px;
+      }
+  }
+}
+
+.input-checkbox {
+  @apply flex items-center justify-start;
+
+  input[type="checkbox"] {
+    @apply hidden appearance-none;
+
+    &:checked ~ label:before {
+      content: "";
+      background-image: url('../images/icons/checkmark.svg');
+      background-size: 10px 10px;
+      border-radius: 2px;
+      @apply bg-blue-500 border-transparent text-white bg-no-repeat bg-center transition ease-in-out duration-100 shadow-none;
+    }
+
+    &:disabled {
+      @apply pointer-events-none opacity-50;
+    }
+  }
+
+  label {
+    @apply cursor-pointer appearance-none;
+
+    &:before {
+      border-radius: 2px;
+      border: 1px solid rgb(209, 209, 209);
+      box-shadow: inset 0 1px 1px rgba(#ddd, .8);
+      content: "";
+      height: 16px;
+      margin-right: 10px;
+      top: -5px;
+      width: 16px;
+
+      @apply bg-white inline-flex items-center justify-center relative transition ease-in-out duration-200;
+
+    }
+
+    &:hover::before {
+      @apply bg-gray-100 border-gray-500;
+    }
+  }
+}
+
+.input-radio {
+  @apply flex items-center justify-start;
+
+  input[type="radio"] {
+    @apply hidden appearance-none;
+
+    &:checked ~ label:before {
+      content: "";
+      @apply bg-blue-500 border-transparent text-white transition ease-in-out duration-100 shadow-none;
+    }
+
+    &:checked ~ label:after {
+      @apply bg-white rounded-full;
+      content: "";
+      width: 6px;
+      height: 6px;
+      position: absolute;
+      top: 8px;
+      left: 5px;
+      box-shadow: 0 1px 1px rgba(#2B6CB0, .9);
+    }
+
+    &:disabled {
+      @apply pointer-events-none opacity-50;
+    }
+  }
+
+  label {
+    @apply cursor-pointer appearance-none relative;
+
+    &:before {
+      border: 1px solid rgb(209, 209, 209);
+      box-shadow: inset 0 1px 1px rgba(#ddd, .8);
+      content: "";
+      height: 16px;
+      margin-right: 4px;
+      top: -5px;
+      width: 16px;
+
+      @apply bg-white inline-flex items-center justify-center relative transition ease-in-out duration-200 rounded-full;
+    }
+
+    &:hover::before {
+      @apply bg-gray-100 border-gray-500;
+    }
+  }
 }
