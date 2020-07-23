@@ -14,6 +14,7 @@ Be sure to also check out [Jumpstart Pro](https://jumpstartrails.com) to save lo
 - [devise](https://github.com/plataformatec/devise)
 - [friendly_id](https://github.com/norman/friendly_id)
 - [sidekiq](https://github.com/mperham/sidekiq)
+- [name_of_person](https://github.com/basecamp/name_of_person)
 
 ### Tailwind CSS by default
 With Rails 6 we have webpacker by default now. Using PostCSS we can install Tailwind as a base CSS framework to harness. I prefer Tailwind due to it's un-opinionated approach.
