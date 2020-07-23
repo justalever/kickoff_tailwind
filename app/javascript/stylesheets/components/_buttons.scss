@@ -1,21 +1,289 @@
-/* Buttons */
+// Remove what you don't need below to save on file size if you're not using Purge CSS
 
 .btn {
-  @apply font-semibold text-sm py-2 px-4 rounded cursor-pointer no-underline;
+  @apply font-normal text-base rounded cursor-pointer border border-transparent appearance-none inline-block select-none leading-normal antialiased align-baseline;
+
+  padding: 0.35rem 0.75rem;
+  transition: 0.15s ease;
+
+  &.btn-sm {
+    @apply text-sm py-px px-2;
+  }
+
+  &.btn-lg {
+    @apply text-lg py-2 px-6;
+  }
+
+  &.btn-xl {
+    @apply text-xl py-3 px-8;
+  }
+
+  &.btn-expanded {
+    @apply block w-full;
+  }
+
+  &.btn-round {
+    @apply rounded-full;
+  }
+
+  &.btn-square {
+    @apply rounded-none;
+  }
 }
 
 .btn-default {
   @apply bg-white border border-gray-400 text-gray-700;
 
-  &:hover, &:focus {
-    @apply border-gray-500;
+  &:hover,
+  &:focus {
+    @apply border-gray-700;
   }
 }
 
-.link {
-  @apply no-underline text-gray-700;
+.btn-white {
+  @apply bg-white text-gray-700 border-transparent border;
 
-  &:hover, &:focus {
-    @apply text-gray-700;
+  &:hover,
+  &:focus {
+    @apply bg-gray-200 text-gray-800;
+  }
+
+  &.btn-outline {
+    @apply border border-white bg-transparent text-white;
+
+    &:hover,
+    &:focus {
+      @apply bg-white border border-white text-gray-800;
+    }
+  }
+}
+
+.btn-black {
+  @apply bg-black text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-gray-900;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-black border border-black;
+
+    &:hover,
+    &:focus {
+      @apply bg-black text-white;
+    }
+  }
+}
+
+.btn-gray {
+  @apply bg-gray-300 text-gray-800;
+
+  &:hover,
+  &:focus {
+    @apply bg-gray-400;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-gray-800 border border-gray-400;
+
+    &:hover,
+    &:focus {
+      @apply bg-gray-400;
+    }
+  }
+}
+
+.btn-red {
+  @apply bg-red-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-red-700;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-red-600 border border-red-600;
+
+    &:hover,
+    &:focus {
+      @apply bg-red-600 text-white;
+    }
+  }
+}
+
+.btn-orange {
+  @apply bg-orange-500 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-orange-600;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-orange-600 border border-orange-600;
+
+    &:hover,
+    &:focus {
+      @apply bg-orange-600 text-white;
+    }
+  }
+}
+
+.btn-yellow {
+  @apply bg-yellow-400 text-black;
+
+  &:hover,
+  &:focus {
+    @apply bg-yellow-500;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-yellow-500 border border-yellow-500;
+
+    &:hover,
+    &:focus {
+      @apply bg-yellow-500 text-white;
+    }
+  }
+}
+
+.btn-green {
+  @apply bg-green-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-green-700;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-green-600 border border-green-600;
+
+    &:hover,
+    &:focus {
+      @apply bg-green-600 text-white;
+    }
+  }
+}
+
+.btn-teal {
+  @apply bg-teal-500 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-teal-600;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-teal-500 border border-teal-500;
+
+    &:hover,
+    &:focus {
+      @apply bg-teal-500 text-white;
+    }
+  }
+}
+
+.btn-blue {
+  @apply bg-blue-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-blue-700;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-blue-600 border border-blue-600;
+
+    &:hover,
+    &:focus {
+      @apply bg-blue-600 text-white;
+    }
+  }
+}
+
+.btn-indigo {
+  @apply bg-indigo-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-indigo-700;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-indigo-600 border border-indigo-600;
+
+    &:hover,
+    &:focus {
+      @apply bg-indigo-600 text-white;
+    }
+  }
+}
+
+.btn-purple {
+  @apply bg-purple-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-purple-700;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-purple-600 border border-purple-600;
+
+    &:hover,
+    &:focus {
+      @apply bg-purple-600 text-white;
+    }
+  }
+}
+
+.btn-pink {
+  @apply bg-pink-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-pink-700;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-pink-600 border border-pink-600;
+
+    &:hover,
+    &:focus {
+      @apply bg-pink-600 text-white;
+    }
+  }
+}
+
+.btn-transparent {
+  @apply text-gray-800 bg-transparent;
+
+  &:hover,
+  &:focus {
+    @apply bg-gray-200;
+  }
+}
+
+.btn-link {
+  @apply text-blue-700 bg-transparent mx-2 cursor-pointer;
+
+  &:hover,
+  &:focus {
+    @apply text-blue-700;
+  }
+}
+
+.btn-group {
+  .btn {
+    @apply rounded-none;
+
+    &:first-child {
+      @apply rounded-tr-none rounded-br-none border-r-0 rounded-tl rounded-bl;
+    }
+
+    &:last-child {
+      @apply rounded-tl-none rounded-bl-none border-l-0 rounded-tr rounded-br;
+    }
   }
 }

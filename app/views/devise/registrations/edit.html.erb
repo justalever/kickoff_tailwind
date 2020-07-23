@@ -1,67 +1,62 @@
 <% content_for :devise_form do %>
-  <h2 class="heading text-4xl font-bold pt-4 mb-8">Edit <%= resource_name.to_s.humanize %></h2>
+  <h2 class="pt-4 mb-8 text-4xl font-bold heading">Edit <%= resource_name.to_s.humanize %></h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="mb-6">
-      <%= f.label :username, class:"label" %>
-      <%= f.text_field :username, autofocus: true, class:"input" %>
-    </div>
-
-    <div class="mb-6">
+    <div class="input-group">
       <%= f.label :name, class:"label" %>
       <%= f.text_field :name, class:"input" %>
     </div>
 
-    <div class="mb-6">
+    <div class="input-group">
       <%= f.label :email, class:"label" %>
       <%= f.email_field :email, autocomplete: "email", class:"input" %>
     </div>
 
-    <div class="mb-6">
+    <div class="input-group">
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
     </div>
 
-    <div class="mb-6">
+    <div class="input-group">
       <%= f.label :password, class:"label" %>
       <%= f.password_field :password, autocomplete: "new-password", class:"input" %>
-      <p class="text-sm text-grey-dark pt-1 italic"> <% if @minimum_password_length %>
-        <%= @minimum_password_length %> characters minimum <% end %> (leave blank if you don't want to change it) </p>
+      <p class="pt-1 text-sm italic text-grey-dark"> <% if @minimum_password_length %>
+          <%= @minimum_password_length %> characters minimum <% end %> (leave blank if you don't want to change it) </p>
 
     </div>
 
-    <div class="mb-6">
+    <div class="input-group">
       <%= f.label :password_confirmation, class: "label" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
     </div>
 
-    <div class="mb-6">
+    <div class="input-group">
       <%= f.label :current_password, class: "label" %>
       <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
-      <p class="text-sm text-grey-dark pt-2 italic">(we need your current password to confirm your changes)</p>
+      <p class="pt-2 text-sm italic text-grey-dark">(we need your current password to confirm your changes)</p>
     </div>
 
-    <div class="mb-6">
+    <div class="input-group">
       <%= f.submit "Update", class: "btn btn-default" %>
     </div>
-    <% end %>
+  <% end %>
 
-    <hr class="border mt-6 mb-3" />
+  <hr class="mt-6 mb-3 border" />
 
-    <h3 class="heading text-xl font-bold mb-4">Cancel my account</h3>
+  <h3 class="mb-4 text-xl font-bold heading">Cancel my account</h3>
 
-    <div class="flex justify-between items-center">
-      <div class="flex-1"><p class="py-4">Unhappy?</p></div>
-
-      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default" %>
+  <div class="flex items-center justify-between">
+    <div class="flex-1">
+      <p class="py-4">Unhappy?</p>
     </div>
+
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-red" %>
+  </div>
 
 <% end %>
 
 <%= render 'devise/shared/form_wrap' %>
-
-

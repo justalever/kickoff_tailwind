@@ -10,9 +10,10 @@ def source_paths
 end
 
 def add_gems
-  gem 'devise', '~> 4.7', '>= 4.7.1'
+  gem 'devise', '~> 4.7', '>= 4.7.2'
   gem 'friendly_id', '~> 5.3'
-  gem 'sidekiq', '~> 6.0', '>= 6.0.1'
+  gem 'sidekiq', '~> 6.1', '>= 6.1.1'
+  gem 'name_of_person', '~> 1.1', '>= 1.1.1'
 end
 
 def add_users
@@ -26,13 +27,16 @@ def add_users
   route "root to: 'home#index'"
 
   # Create Devise User
-  generate :devise, "User", "username", "name", "admin:boolean"
+  generate :devise, "User", "first_name", "last_name", "admin:boolean"
 
   # set admin boolean to false by default
   in_root do
     migration = Dir.glob("db/migrate/*").max_by{ |f| File.mtime(f) }
     gsub_file migration, /:admin/, ":admin, default: false"
   end
+
+  # name_of_person gem
+  append_to_file("app/models/user.rb", "\nhas_person_name\n", after: "class User < ApplicationRecord")
 end
 
 def copy_templates
@@ -41,12 +45,21 @@ end
 
 def add_tailwind
   run "yarn add tailwindcss"
+  run "yarn add @fullhuman/postcss-purgecss"
+
   run "mkdir -p app/javascript/stylesheets"
+
   append_to_file("app/javascript/packs/application.js", 'import "stylesheets/application"')
   inject_into_file("./postcss.config.js",
-  "var tailwindcss = require('tailwindcss');\n",  before: "module.exports")
+  "let tailwindcss = require('tailwindcss');\n",  before: "module.exports")
   inject_into_file("./postcss.config.js", "\n    tailwindcss('./app/javascript/stylesheets/tailwind.config.js'),", after: "plugins: [")
+
   run "mkdir -p app/javascript/stylesheets/components"
+end
+
+def copy_postcss_config
+  run "rm postcss.config.js"
+  copy_file "postcss.config.js"
 end
 
 # Remove Application CSS
@@ -90,6 +103,7 @@ after_bundle do
   copy_templates
   add_tailwind
   add_friendly_id
+  copy_postcss_config
 
   # Migrate
   rails_command "db:create"

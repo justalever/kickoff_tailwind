@@ -1,21 +1,21 @@
 <% content_for :devise_form do %>
 
-  <h2 class="heading text-4xl font-bold pt-4 mb-8">Resend confirmation instructions</h2>
+  <h2 class="pt-4 mb-8 text-4xl font-bold heading">Resend confirmation instructions</h2>
 
   <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="mb-6">
+    <div class="input-group">
       <%= f.label :email, class: "label" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "input" %>
     </div>
 
-    <div class="mb-6">
+    <div class="input-group">
       <%= f.submit "Resend confirmation instructions", class: "btn btn-default" %>
     </div>
   <% end %>
 
-  <hr class="border mt-6" />
+  <hr class="mt-6 border" />
 
   <%= render "devise/shared/links" %>
 
