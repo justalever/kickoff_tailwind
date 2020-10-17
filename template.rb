@@ -9,6 +9,13 @@ def source_paths
   [File.expand_path(File.dirname(__FILE__))]
 end
 
+def add_gems
+  gem 'devise', '~> 4.7', '>= 4.7.2'
+  gem 'friendly_id', '~> 5.3'
+  gem 'sidekiq', '~> 6.1', '>= 6.1.1'
+  gem 'name_of_person', '~> 1.1', '>= 1.1.1'
+end
+
 def set_application_name
   # Ask user for application name
   application_name = ask("What is the name of your application? Default: Kickoff")
@@ -21,13 +28,6 @@ def set_application_name
 
   # Announce the user where he can change the application name in the future.
   puts "Your application name is #{application_name}. You can change this later on: ./config/application.rb"
-end
-
-def add_gems
-  gem 'devise', '~> 4.7', '>= 4.7.2'
-  gem 'friendly_id', '~> 5.3'
-  gem 'sidekiq', '~> 6.1', '>= 6.1.1'
-  gem 'name_of_person', '~> 1.1', '>= 1.1.1'
 end
 
 def add_users
@@ -110,6 +110,7 @@ source_paths
 add_gems
 
 after_bundle do
+  set_application_name
   add_users
   remove_app_css
   add_sidekiq
