@@ -113,37 +113,37 @@
 }
 
 .btn-orange {
-  @apply bg-orange-500 text-white;
+  @apply bg-yellow-500 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-orange-600;
+    @apply bg-yellow-600;
   }
 
   &.btn-outline {
-    @apply bg-transparent text-orange-600 border border-orange-600;
+    @apply bg-transparent text-yellow-600 border border-yellow-600;
 
     &:hover,
     &:focus {
-      @apply bg-orange-600 text-white;
+      @apply bg-yellow-600 text-white;
     }
   }
 }
 
 .btn-yellow {
-  @apply bg-yellow-400 text-black;
+  @apply bg-yellow-300 text-black;
 
   &:hover,
   &:focus {
-    @apply bg-yellow-500;
+    @apply bg-yellow-400;
   }
 
   &.btn-outline {
-    @apply bg-transparent text-yellow-500 border border-yellow-500;
+    @apply bg-transparent text-yellow-400 border border-yellow-400;
 
     &:hover,
     &:focus {
-      @apply bg-yellow-500 text-white;
+      @apply bg-yellow-400 text-white;
     }
   }
 }
@@ -162,24 +162,6 @@
     &:hover,
     &:focus {
       @apply bg-green-600 text-white;
-    }
-  }
-}
-
-.btn-teal {
-  @apply bg-teal-500 text-white;
-
-  &:hover,
-  &:focus {
-    @apply bg-teal-600;
-  }
-
-  &.btn-outline {
-    @apply bg-transparent text-teal-500 border border-teal-500;
-
-    &:hover,
-    &:focus {
-      @apply bg-teal-500 text-white;
     }
   }
 }
