@@ -32,7 +32,8 @@ $ rails new sample_app -d <postgresql, mysql, sqlite3> -m template.rb
 ### Once installed what do I get?
 
 - Webpack support + Tailwind CSS configured in the `app/javascript` directory.
-- Devise with a new `username` and `name` field already migrated in. Enhanced views using Tailwind CSS.
+- Devise with a new `name` field already migrated in. The name field maps to the `first_name` and `last_name` fields in the database thanks to the `name_of_person` gem. 
+- Enhanced views using Tailwind CSS.
 - Support for Friendly IDs thanks to the handy [friendly_id](https://github.com/norman/friendly_id) gem. Note that you'll still need to do some work inside your models for this to work. This template installs the gem and runs the associated generator.
 - Optional Foreman support thanks to a `Procfile`. Once you scaffold the template, run `foreman start` to initalize and head to `locahost:5000` to get `rails server`, `sidekiq` and `bin/webpack-dev-server` running all in one terminal instance. Note: Webpack will still compile down with just `rails server` if you don't want to use Foreman. Foreman needs to be installed as a global gem on your system for this to work. i.e. `gem install foreman`
 - A custom scaffold view template when generating theme resources (Work in progress).
