@@ -44,7 +44,7 @@ def copy_templates
 end
 
 def add_tailwind
-  run "yarn add tailwindcss"
+  run "yarn add tailwindcss@1.9.6"
   run "yarn add @fullhuman/postcss-purgecss"
 
   run "mkdir -p app/javascript/stylesheets"
