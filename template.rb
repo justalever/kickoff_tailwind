@@ -29,8 +29,18 @@ def add_template_repository_to_source_paths
   end
 end
 
+def remove_gem(*names)
+  names.each do |name|
+    gsub_file 'Gemfile', /gem '#{name}'.*\n/, ''
+  end
+end
+
 def source_paths
   [File.expand_path(File.dirname(__FILE__))]
+end
+
+def remove_gems
+  remove_gem 'tzinfo-data'
 end
 
 def add_gems
@@ -100,7 +110,7 @@ def add_sidekiq
 end
 
 def add_foreman
-  get_remote "Procfile"
+  copy_file "Procfile"
 end
 
 def add_friendly_id
@@ -111,6 +121,7 @@ end
 add_template_repository_to_source_paths
 source_paths
 
+remove_gems
 add_gems
 
 after_bundle do
