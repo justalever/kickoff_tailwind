@@ -5,6 +5,17 @@ Author URI: https://web-crunch.com
 Instructions: $ rails new myapp -d <postgresql, mysql, sqlite3> -m template.rb
 =end
 
+def get_remote(src, dest = nil)
+  dest ||= src
+  if ENV['RAILS_TEMPLATE_DEBUG'].present?
+    repo = File.join(File.dirname(__FILE__), '/')
+  else
+    repo = 'https://raw.githubusercontent.com/dfang/kickoff_tailwind/master/'
+  end
+  remote_file = repo + src
+  get(remote_file, dest, force: true)
+end
+
 def source_paths
   [File.expand_path(File.dirname(__FILE__))]
 end
@@ -76,7 +87,7 @@ def add_sidekiq
 end
 
 def add_foreman
-  copy_file "Procfile"
+  get_remote "Procfile"
 end
 
 def add_friendly_id
