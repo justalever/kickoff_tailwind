@@ -7,7 +7,7 @@ Instructions: $ rails new myapp -d <postgresql, mysql, sqlite3> -m template.rb
 
 require "fileutils"
 
-# https://github.com/mattbrictson/rails-template/blob/main/template.rb
+# Copied from: https://github.com/mattbrictson/rails-template
 # Add this template directory to source_paths so that Thor actions like
 # copy_file and template resolve against our source files. If this file was
 # invoked remotely via HTTP, that means the files are not present locally.
@@ -35,10 +35,6 @@ def remove_gem(*names)
   names.each do |name|
     gsub_file 'Gemfile', /gem '#{name}'.*\n/, ''
   end
-end
-
-def source_paths
-  [File.expand_path(File.dirname(__FILE__))]
 end
 
 def remove_gems
