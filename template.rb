@@ -5,15 +5,28 @@ Author URI: https://web-crunch.com
 Instructions: $ rails new myapp -d <postgresql, mysql, sqlite3> -m template.rb
 =end
 
-def get_remote(src, dest = nil)
-  dest ||= src
-  if ENV['RAILS_TEMPLATE_DEBUG'].present?
-    repo = File.join(File.dirname(__FILE__), '/')
+# https://github.com/mattbrictson/rails-template/blob/main/template.rb
+# Add this template directory to source_paths so that Thor actions like
+# copy_file and template resolve against our source files. If this file was
+# invoked remotely via HTTP, that means the files are not present locally.
+# In that case, use `git clone` to download them to a local temporary dir.
+def add_template_repository_to_source_paths
+  if __FILE__ =~ %r{\Ahttps?://}
+    require "tmpdir"
+    source_paths.unshift(tempdir = Dir.mktmpdir("kickoff_tailwind-"))
+    at_exit { FileUtils.remove_entry(tempdir) }
+    git clone: [
+      "--quiet",
+      "https://github.com/dfang/kickoff_tailwind.git",
+      tempdir
+    ].map(&:shellescape).join(" ")
+
+    if (branch = __FILE__[%r{kickoff_tailwind/(.+)/template.rb}, 1])
+      Dir.chdir(tempdir) { git checkout: branch }
+    end
   else
-    repo = 'https://raw.githubusercontent.com/dfang/kickoff_tailwind/master/'
+    source_paths.unshift(File.dirname(__FILE__))
   end
-  remote_file = repo + src
-  get(remote_file, dest, force: true)
 end
 
 def source_paths
@@ -95,6 +108,7 @@ def add_friendly_id
 end
 
 # Main setup
+add_template_repository_to_source_paths
 source_paths
 
 add_gems
