@@ -5,6 +5,8 @@ Author URI: https://web-crunch.com
 Instructions: $ rails new myapp -d <postgresql, mysql, sqlite3> -m template.rb
 =end
 
+require "fileutils"
+
 # https://github.com/mattbrictson/rails-template/blob/main/template.rb
 # Add this template directory to source_paths so that Thor actions like
 # copy_file and template resolve against our source files. If this file was
@@ -45,9 +47,14 @@ end
 
 def add_gems
   gem 'devise', '~> 4.7', '>= 4.7.3'
+  gem 'devise_masquerade', '~> 1.2'
   gem 'friendly_id', '~> 5.4', '>= 5.4.1'
   gem 'sidekiq', '~> 6.1', '>= 6.1.2'
   gem 'name_of_person', '~> 1.1', '>= 1.1.1'
+  gem 'noticed', '~> 1.2'
+  gem 'omniauth-github', '~> 1.4'
+  gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
+  gem 'image_processing'
 end
 
 def add_users
@@ -74,6 +81,12 @@ def add_users
 end
 
 def copy_templates
+  remove_file "app/assets/stylesheets/application.css"
+
+  copy_file "Procfile"
+  copy_file "Procfile.dev"
+  copy_file ".foreman"
+
   directory "app", force: true
 end
 
@@ -87,11 +100,6 @@ def add_tailwind
   inject_into_file("./postcss.config.js", "\n    require('tailwindcss')('./app/javascript/stylesheets/tailwind.config.js'),", after: "plugins: [")
 
   run "mkdir -p app/javascript/stylesheets/components"
-end
-
-# Remove Application CSS
-def remove_app_css
-  remove_file "app/assets/stylesheets/application.css"
 end
 
 def add_sidekiq
@@ -109,10 +117,6 @@ def add_sidekiq
   insert_into_file "config/routes.rb", "#{content}\n\n", after: "Rails.application.routes.draw do\n"
 end
 
-def add_foreman
-  copy_file "Procfile"
-end
-
 def add_friendly_id
   generate "friendly_id"
 end
@@ -126,9 +130,7 @@ add_gems
 
 after_bundle do
   add_users
-  remove_app_css
   add_sidekiq
-  add_foreman
   copy_templates
   add_tailwind
   add_friendly_id
