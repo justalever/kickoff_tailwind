@@ -51,6 +51,7 @@ def add_gems
   gem 'omniauth-github', '~> 1.4'
   gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
   gem 'image_processing'
+  gem 'high_voltage', '~> 3.1'
 end
 
 def add_users
@@ -119,7 +120,6 @@ end
 
 # Main setup
 add_template_repository_to_source_paths
-source_paths
 
 remove_gems
 add_gems
