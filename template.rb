@@ -10,10 +10,15 @@ def source_paths
 end
 
 def add_gems
-  gem 'devise', '~> 4.7', '>= 4.7.3'
-  gem 'friendly_id', '~> 5.4', '>= 5.4.1'
-  gem 'sidekiq', '~> 6.1', '>= 6.1.2'
+  gem 'devise', '~> 4.8', '>= 4.8.1'
+  gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+  gem 'sidekiq', '~> 6.3', '>= 6.3.1'
   gem 'name_of_person', '~> 1.1', '>= 1.1.1'
+  gem 'cssbundling-rails'
+end
+
+def add_css_bundling
+  rails_command "css:install:tailwind"
 end
 
 def add_users
@@ -41,23 +46,6 @@ end
 
 def copy_templates
   directory "app", force: true
-end
-
-def add_tailwind
-  # Until PostCSS 8 ships with Webpacker/Rails we need to run this compatability version
-  # See: https://tailwindcss.com/docs/installation#post-css-7-compatibility-build
-  run "yarn add tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9"
-  run "mkdir -p app/javascript/stylesheets"
-
-  append_to_file("app/javascript/packs/application.js", 'import "stylesheets/application"')
-  inject_into_file("./postcss.config.js", "\n    require('tailwindcss')('./app/javascript/stylesheets/tailwind.config.js'),", after: "plugins: [")
-
-  run "mkdir -p app/javascript/stylesheets/components"
-end
-
-# Remove Application CSS
-def remove_app_css
-  remove_file "app/assets/stylesheets/application.css"
 end
 
 def add_sidekiq
@@ -89,17 +77,16 @@ source_paths
 add_gems
 
 after_bundle do
+  add_css_bundling
   add_users
-  remove_app_css
   add_sidekiq
-  add_foreman
   copy_templates
-  add_tailwind
   add_friendly_id
 
   # Migrate
   rails_command "db:create"
   rails_command "db:migrate"
+
 
   git :init
   git add: "."
