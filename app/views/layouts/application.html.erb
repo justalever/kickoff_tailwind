@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html class="antialiased">
+<html class="h-full antialiased">
   <%= render "shared/head" %>
 
-  <body class="font-sans font-normal leading-normal text-gray-800 bg-white">
-    <%= render "shared/flash_notice" %>
-    <%= render "shared/header" %>
+  <body class="font-sans font-normal leading-normal text-gray-800 bg-white flex flex-col min-h-screen ">
 
-    <main class="px-4 lg:px-10">
+    <header class="mb-4">
+      <%= render "shared/flash_notice" %>
+      <%= render "shared/navbar" %>
+    </header>
+
+    <main class="flex-grow">
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
   </body>
