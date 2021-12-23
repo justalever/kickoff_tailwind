@@ -6,4 +6,8 @@ module ApplicationHelper
       error:  "bg-red-600 #{flash_base}",
     }.stringify_keys[flash_type.to_s] || flash_type.to_s
   end
+
+  def nav_classes
+    ["devise/registrations", "devise/sessions", "devise/confirmations", "devise/passwords", "devise/unlocks"].include?(params[:controller]) ? "hidden" : nil
+  end
 end
