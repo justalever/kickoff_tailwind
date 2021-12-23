@@ -17,15 +17,17 @@ def add_gems
   gem 'cssbundling-rails'
   gem 'pay', '~> 3.0' # https://github.com/pay-rails/
   gem 'stripe', '>= 2.8', '< 6.0' # I prefer Stripe but you can opt for braintree or paddle too. https://github.com/pay-rails/pay/blob/master/docs/1_installation.md#gemfile
-  gem 'jsbundling-rails'
 end
 
 def add_css_bundling
   rails_command "css:install:tailwind"
+  # remove tailwind config that gets installed and swap for new one
+  remove_file "tailwind.config.js"
 end
 
-def add_js_bundling
-  rails_command "javascript:install:esbuild"
+def add_storage_and_rich_text
+  rails_command "active_storage:install"
+  rails_command "action_text:install"
 end
 
 def add_users
@@ -84,6 +86,7 @@ end
 
 def add_tailwind_plugins
   run "yarn add -D @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio @tailwindcss/line-clamp"
+  copy_file "tailwind.config.js"
 end
 
 # Main setup
@@ -92,6 +95,7 @@ source_paths
 add_gems
 
 after_bundle do
+  add_storage_and_rich_text
   add_css_bundling
   add_tailwind_plugins
   add_users
