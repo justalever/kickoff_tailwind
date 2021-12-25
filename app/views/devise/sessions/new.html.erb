@@ -2,25 +2,24 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="mb-6">
-      <%= f.label :email, class: "block" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+      <%= f.label :email, class: label_class %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: input_class %>
     </div>
 
     <div class="mb-6">
-      <%= f.label :password, class: "block" %>
-      <%= f.password_field :password, autocomplete: "current-password" %>
+      <%= f.label :password, class: label_class %>
+      <%= f.password_field :password, autocomplete: "current-password", class: input_class %>
     </div>
 
     <div class="mb-6">
       <% if devise_mapping.rememberable? %>
-        <%= f.check_box :remember_me %>
+        <%= f.check_box :remember_me, class: checkbox_class %>
         <%= f.label :remember_me %>
       <% end %>
     </div>
 
     <div class="mb-6">
-      <%= f.submit "Log in", class: "p-3 bg-gray-800 text-white w-full text-center" %>
+      <%= f.submit "Sign in", class: button_class(theme: "primary", variant: "expanded") %>
     </div>
-
   <% end %>
 <% end %>
