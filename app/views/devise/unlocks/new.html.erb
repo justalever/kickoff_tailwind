@@ -1,22 +1,14 @@
-<% content_for :devise_form do %>
-  <h2 class="pt-4 mb-8 text-4xl font-bold heading">Resend unlock instructions</h2>
-
+<%= render layout: "auth_layout", locals: { title: "Resend unlock instructions" }  do %>
   <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="input-group">
-      <%= f.label :email, class: "label" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+    <div class="mb-6">
+      <%= f.label :email, class: label_class %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: input_class %>
     </div>
 
-    <div class="input-group">
-      <%= f.submit "Resend unlock instructions", class: "btn btn-default" %>
+    <div class="mb-6">
+      <%= f.submit "Resend instructions", class: button_class(theme: "primary", variant: "expanded") %>
     </div>
   <% end %>
-
-  <hr class="mt-6 border" />
-
-  <%= render "devise/shared/links" %>
 <% end %>
-
-<%= render "devise/shared/form_wrap" %>

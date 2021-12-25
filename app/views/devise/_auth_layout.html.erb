@@ -2,9 +2,9 @@
   subtitle ||= ""
   title ||= "" %>
 <div class="items-start justify-center block h-full grid-cols-1 gap-4 lg:grid lg:items-center lg:grid-cols-2">
-  <div class="relative flex items-center justify-center h-32 overflow-hidden lg:h-screen" style="background: #000000;">
+  <div class="relative flex items-center justify-center h-32 overflow-hidden lg:h-screen bg-gradient-to-tr from-black to-gray-800">
     <div class="inset-auto z-30 flex items-center justify-center flex-1 w-full h-auto font-sans text-center text-white shadow lg:flex lg:h-screen lg:absolute xl:text-5xl">
-      <h1 class="font-semibold text-4xl">Kickoff Tailwind</h1>
+      <h1 class="font-semibold text-4xl">Your App Name Here</h1>
     </div>
   </div>
   <div>
@@ -19,7 +19,7 @@
         <% end %>
 
         <% unless subtitle.blank? %>
-          <p class="text-gray-600"><%= subtitle %></p>
+          <p class="text-gray-600 mt-3"><%= subtitle %></p>
         <% end %>
       </div>
 
