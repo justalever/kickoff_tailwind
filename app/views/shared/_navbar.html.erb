@@ -1,30 +1,36 @@
 
-<nav class="flex flex-wrap items-center justify-between py-3 text-gray-700 bg-white container mx-auto lg:px-0 px-4 <%= nav_classes %>">
+<nav class="flex flex-wrap items-center justify-between py-3 text-gray-700 bg-white container mx-auto lg:px-0 px-4 <%= nav_classes %>" data-controller="nav">
   <div class="flex items-center mr-6 flex-no-shrink">
      <%= link_to root_path, class:"link text-xl tracking-tight font-black" do %>
       <span class="sr-only">Add your app name here</span>
       <%# Remove this logo and add your own %>
-      <svg fill="none" class="w-8 h-8" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="56" x2="463" y1="46" y2="465"><stop offset="0" stop-color="#8038ed"/><stop offset="1" stop-color="#3a0092"/></linearGradient><path d="m0 0h512v512h-512z" fill="#fff"/><rect fill="url(#a)" height="512" rx="110" width="512"/><g stroke="#fff"><circle cx="190" cy="302" r="79.5" stroke-opacity=".9" stroke-width="25"/><circle cx="254" cy="377" r="34" stroke-opacity=".8" stroke-width="10"/><circle cx="282" cy="227" r="106" stroke-width="50"/></g></svg>
+      <svg fill="none" class="w-9 h-9" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="56" x2="463" y1="46" y2="465"><stop offset="0" stop-color="#8038ed"/><stop offset="1" stop-color="#3a0092"/></linearGradient><path d="m0 0h512v512h-512z" fill="#fff"/><rect fill="url(#a)" height="512" rx="110" width="512"/><g stroke="#fff"><circle cx="190" cy="302" r="79.5" stroke-opacity=".9" stroke-width="25"/><circle cx="254" cy="377" r="34" stroke-opacity=".8" stroke-width="10"/><circle cx="282" cy="227" r="106" stroke-width="50"/></g></svg>
     <% end %>
   </div>
   <div class="block lg:hidden">
     <%# Mobile nav toggle %>
-    <button class="flex items-center px-3 py-2 border border-gray-500 rounded text-grey hover:text-gray-600 hover:border-gray-600">
-      <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+    <button class="flex items-center p-2 -mr-1 rounded-lg focus:bg-gray-100" data-action="click->nav#toggleMenu touch->nav#toggleMenu">
+      <svg class="stroke-current text-gray-500 w-7 h-7" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Menu</title><g fill="none"><path d="M4 6h16M4 12h8m-8 6h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
     </button>
   </div>
-  <div class="items-center block w-full text-center lg:flex-1 lg:flex lg:text-left">
+  <div class="items-center w-full text-center lg:flex-1 lg:flex lg:text-left pt-2 lg:pt-0 hidden" data-nav-target="menu">
     <div class="lg:flex-grow">
-      <%= link_to "Basic Link", "#", class: "p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100" %>
+      <%= link_to "Basic Link", "#", class: "p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
     </div>
     <div class="items-center block w-full mt-2 text-center lg:flex lg:flex-row lg:flex-1 lg:mt-0 lg:text-left lg:justify-end">
       <div><%# More links can go here %></div>
       <% if user_signed_in? %>
-        <%= link_to "Edit account", edit_user_registration_path, class: "p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100" %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100" %>
+        <%= link_to "Edit account", edit_user_registration_path, class: "p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
       <% else %>
-        <%= link_to "Sign in", new_user_session_path, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100" %>
-        <%= link_to "Sign up", new_user_registration_path, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100" %>
+        <%= link_to "Sign in", new_user_session_path, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
+        <%= link_to "Sign up", new_user_registration_path, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block lg:ml-2" %>
+
+        <span class="h-5 w-px bg-gray-200 mx-3"></span>
+
+        <%= link_to "https://github.com/justalever/kickoff_tailwind", target: :_blank, class: "group ml-2" do %>
+        <svg class="fill-current text-gray-400 group-hover:text-gray-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        <% end %>
       <% end %>
     </div>
   </div>
