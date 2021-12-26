@@ -1,7 +1,5 @@
 ![Kickoff Tailwind](https://f001.backblazeb2.com/file/webcrunch/kt.jpg)
 
-# Rails Kickoff – Tailwind
-
 A free and simple starting point for Ruby on Rails 7 applications.. This particular template utilizes [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework for rapid UI development.
 
 ### Included gems
