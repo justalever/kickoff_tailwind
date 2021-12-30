@@ -1,5 +1,5 @@
 <%= render layout: "auth_layout", locals: { title: "Edit account" }  do %>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
 
     <%= render "devise/shared/error_messages", resource: resource %>
 

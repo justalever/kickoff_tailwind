@@ -1,5 +1,5 @@
 <%= render layout: "auth_layout", locals: { title: "Resend confirmation instructions" }  do %>
-  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="mb-6">

@@ -1,6 +1,6 @@
 <%= render layout: "auth_layout", locals: { title: "Forgot password", subtitle: "If your email is in our database we'll send you password reset instructions." }  do %>
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="mb-6">

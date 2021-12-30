@@ -1,5 +1,5 @@
 <%= render layout: "auth_layout", locals: { title: "Sign in" }  do %>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
 
     <div class="mb-6">
       <%= f.label :email, class: label_class %>
