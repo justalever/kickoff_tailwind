@@ -10,7 +10,7 @@ def source_paths
 end
 
 def add_gems
-  gem 'devise', github: "heartcombo/devise", branch: "master"
+  gem 'devise', '~> 4.8'
   gem 'friendly_id', '~> 5.4', '>= 5.4.2'
   gem 'sidekiq', '~> 6.3', '>= 6.3.1'
   gem 'name_of_person', '~> 1.1', '>= 1.1.1'
