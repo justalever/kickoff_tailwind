@@ -4,6 +4,7 @@ module ApplicationHelper
     {
       notice: "bg-indigo-600 #{flash_base}",
       error:  "bg-red-600 #{flash_base}",
+      alert: "bg-red-600 #{flash_base}"
     }.stringify_keys[flash_type.to_s] || flash_type.to_s
   end
 
