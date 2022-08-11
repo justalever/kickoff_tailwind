@@ -10,19 +10,20 @@ def source_paths
 end
 
 def add_gems
-  gem 'devise', '~> 4.8'
+  gem 'devise', '~> 4.8', '>= 4.8.1'
   gem 'friendly_id', '~> 5.4', '>= 5.4.2'
-  gem 'sidekiq', '~> 6.3', '>= 6.3.1'
-  gem 'name_of_person', '~> 1.1', '>= 1.1.1'
   gem 'cssbundling-rails'
-  gem 'stripe', '>= 2.8', '< 6.0' # I prefer Stripe but you can opt for braintree or paddle too. https://github.com/pay-rails/pay/blob/master/docs/1_installation.md#gemfile
+  gem 'name_of_person'
+  gem 'sidekiq', '~> 6.5', '>= 6.5.4'
+  gem 'stripe'
 end
 
-def add_css_bundling
+def add_tailwind
   rails_command "css:install:tailwind"
-  # remove tailwind config that gets installed and swap for new one
+  # remove tailwind config that gets installed and swap for custom config
   remove_file "tailwind.config.js"
 end
+
 
 def add_storage_and_rich_text
   rails_command "active_storage:install"
@@ -88,9 +89,9 @@ source_paths
 add_gems
 
 after_bundle do
-  add_storage_and_rich_text
-  add_css_bundling
+  add_tailwind
   add_tailwind_plugins
+  add_storage_and_rich_text
   add_users
   add_sidekiq
   copy_templates

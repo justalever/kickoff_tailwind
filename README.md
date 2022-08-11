@@ -13,14 +13,14 @@ A free and simple starting point for Ruby on Rails 7 applications.. This particu
 
 ### Tailwind CSS by default
 
-This template comes with Tailwind CSS preconfigured for use. To make use of tools like `@apply` and `@layer` a more sophisticated setup is required likely using PostCSS and JavaScript bundling. There is a [javascript-bundling](https://github.com/rails/jsbundling-rails) gem to help with this if you require it.
+This template comes with Tailwind CSS preconfigured for use. To make use of tools like `@apply` and `@layer` a more sophisticated setup is required likely using PostCSS and JavaScript bundling.
 
 ## How it works
 
-When creating a new rails app simply pass the template filename and ruby extension through.
+When creating a new rails app simply pass the template filename and ruby extension through. I opt for esbuild instead of the default importmap configuration for JavaScript.
 
 ```bash
-$ rails new sample_app -d <postgresql, mysql, sqlite3> -m template.rb
+$ rails new sample_app -j esbuild -m template.rb
 ```
 
 ### Once installed what do I get?
@@ -32,6 +32,7 @@ $ rails new sample_app -d <postgresql, mysql, sqlite3> -m template.rb
 - Support for Friendly IDs thanks to the handy [friendly_id](https://github.com/norman/friendly_id) gem. Note that you'll still need to do some work inside your models for this to work. This template installs the gem and runs the associated generator.
 - Optional Foreman support. Run `.bin/dev` to kick off rails and Tailwind processes. Foreman needs to be installed as a global gem on your system for this to work. i.e. `gem install foreman`
 - Custom view helper defaults for basic button and form elements.
+- Scaffolding templates made with Tailwind CSS
 
 ### Boot it up
 
