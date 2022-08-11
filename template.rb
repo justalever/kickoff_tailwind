@@ -15,7 +15,6 @@ def add_gems
   gem 'sidekiq', '~> 6.3', '>= 6.3.1'
   gem 'name_of_person', '~> 1.1', '>= 1.1.1'
   gem 'cssbundling-rails'
-  gem 'pay', '~> 3.0' # https://github.com/pay-rails/
   gem 'stripe', '>= 2.8', '< 6.0' # I prefer Stripe but you can opt for braintree or paddle too. https://github.com/pay-rails/pay/blob/master/docs/1_installation.md#gemfile
 end
 
@@ -55,6 +54,7 @@ end
 
 def copy_templates
   directory "app", force: true
+  directory "lib", force: true
 end
 
 def add_sidekiq
@@ -76,16 +76,9 @@ def add_friendly_id
   generate "friendly_id"
 end
 
-def add_pay
-  rails_command "pay:install:migrations"
-
-  # add pay_customer to user
-  # https://github.com/pay-rails/pay/blob/master/docs/1_installation.md#models
-  append_to_file("app/models/user.rb", "\npay_customer\n", after: "class User < ApplicationRecord")
-end
-
 def add_tailwind_plugins
   run "yarn add -D @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio @tailwindcss/line-clamp"
+
   copy_file "tailwind.config.js"
 end
 
@@ -102,7 +95,6 @@ after_bundle do
   add_sidekiq
   copy_templates
   add_friendly_id
-  add_pay
 
   # Migrate
   rails_command "db:create"

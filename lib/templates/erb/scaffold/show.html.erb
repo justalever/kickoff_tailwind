@@ -1,0 +1,23 @@
+<div class="max-w-3xl mx-auto px-4">
+  <div class="flex items-center justify-between">
+    <h1 class="flex-1 font-bold text-3xl"><%= singular_table_name.capitalize %></h1>
+
+    <div class="flex-wrap lg:flex items-center lg:space-x-3">
+      <%%= link_to <%= index_helper %>_path, class: button_class(theme: "transparent") do %>
+      All <%= plural_table_name.capitalize %>
+      <%% end %>
+      <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: button_class(theme:"primary") do %>
+      Edit
+      <%% end %>
+    </div>
+  </div>
+
+  <ul class="text-slate-700">
+    <%- attributes.each do |attribute| -%>
+      <li>
+        <p class="font-semibold"><%= attribute.human_name %>:</p>
+        <p><%%= @<%= singular_table_name %>.<%= attribute.name %> %></p>
+      </li>
+    <%- end -%>
+  </ul>
+</div>

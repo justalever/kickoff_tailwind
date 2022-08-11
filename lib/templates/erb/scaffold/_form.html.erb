@@ -1,0 +1,41 @@
+<%%= form_with(model: <%= model_resource_name %>) do |form| %>
+<%% if <%= singular_table_name %>.errors.any? %>
+<div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
+  <h2 class="text-lg font-semibold mb-3"><%%= pluralize(<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
+
+  <ul class="list-disc leading-relaxed">
+    <%% <%= singular_table_name %>.errors.full_messages.each do |message| %>
+    <li><%%= message %></li>
+    <%% end %>
+  </ul>
+</div>
+<%% end %>
+
+<% attributes.each do |attribute| -%>
+  <div class="mb-6">
+    <% if attribute.password_digest? -%>
+      <%%= form.label :password, class: label_class %>
+      <%%= form.password_field :password, class: input_class %>
+    </div>
+
+    <%%= form.label :password_confirmation, class: label_class %>
+    <%%= form.password_field :password_confirmation, class: input_class %>
+  <% else -%>
+    <%%= form.label :<%= attribute.column_name %>, class: label_class %>
+    <% if attribute.field_type == "checkbox" -%>
+      <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: input_checkbox %>
+    <% else -%>
+      <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: input_class %>
+    <% end -%>
+  <% end -%>
+</div>
+<% end -%>
+
+<%%= form.submit class: button_class(theme: 'primary') %>
+
+<%% if <%= model_resource_name %>.persisted? %>
+<%%= link_to "Cancel", <%= model_resource_name %>, class: "text-neutral-700 underline inline-block ml-3" %>
+<%% else %>
+<%%= link_to "Cancel", <%= index_helper %>_path, class:  "text-neutral-700 underline inline-block ml-3" %>
+<%% end %>
+<%% end %>

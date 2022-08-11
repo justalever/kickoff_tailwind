@@ -1,0 +1,47 @@
+<% name_attribute = attributes.find{ |a| a.name == "name" } %>
+<% has_name = !!name_attribute %>
+
+<div class="container mx-auto px-4">
+  <div class="flex items-center justify-between flex-wrap mb-6">
+    <h1 class="text-3xl font-bold"><%= plural_table_name.capitalize %></h1>
+
+    <%%= link_to new_<%= singular_table_name %>_path, class: button_class(theme: "primary") do %>
+    Add New <%= human_name %>
+    <%% end %>
+  </div>
+
+  <table class="table-auto border-collapse border-slate-400 w-full">
+    <thead class="bg-slate-50 dark:bg-slate-700">
+      <tr>
+        <% if has_name %>
+          <th class="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Name</th>
+        <% end %>
+        <% attributes.without(name_attribute).each do |attribute| -%>
+          <th class="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left"><%= attribute.human_name %></th>
+        <% end -%>
+        <% unless has_name %>
+          <th class="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left"></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%% @<%= plural_table_name%>.each do |<%= singular_table_name %>| %>
+      <%%= content_tag :tr, id: dom_id(<%= singular_table_name %>), class: dom_class(<%= singular_table_name %>) do %>
+      <% if has_name %>
+        <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400"><%%= link_to <%= singular_table_name %>.name, <%= singular_table_name %> %></td>
+      <% end %>
+
+      <% attributes.without(name_attribute).each do |attribute| -%>
+        <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400"><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+      <% end -%>
+
+      <% unless has_name %>
+        <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400"><%%= link_to 'Show', <%= singular_table_name %> %></td>
+      <% end %>
+      <%% end %>
+      <%% end %>
+    </tbody>
+  </table>
+</div>
+</div>

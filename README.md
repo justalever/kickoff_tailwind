@@ -8,7 +8,6 @@ A free and simple starting point for Ruby on Rails 7 applications.. This particu
 - [friendly_id](https://github.com/norman/friendly_id)
 - [sidekiq](https://github.com/mperham/sidekiq)
 - [name_of_person](https://github.com/basecamp/name_of_person)
-- [pay-rails](https://github.com/pay-rails/pay)
 - [stripe](https://github.com/stripe/stripe-ruby)
 - [css-bundling](https://github.com/rails/cssbundling-rails) - now part of Rails 7
 
@@ -29,7 +28,7 @@ $ rails new sample_app -d <postgresql, mysql, sqlite3> -m template.rb
 - [Tailwind CSS](https://tailwind.com) by default. You may [opt for Bootstrap, Bulma, Sass, and PostCSS](https://github.com/rails/cssbundling-rails#installation) but this will require manual changes to the existing markup in the generated template view files.
 - [Devise](https://github.com/plataformatec/devise) with a new `name` field already migrated in. The name field maps to the `first_name` and `last_name` fields in the database thanks to the [`name_of_person`](https://github.com/basecamp/name_of_person) gem.
 - Enhanced views and devise views using Tailwind CSS.
-- The [pay-rails](https://github.com/pay-rails/pay) gem installed and configured for use with Stripe to make accepting payments much easier. Be sure to add your own unique API keys.
+- The [Stripe](https://rubygems.org/gems/stripe/) gem installed with the Stripe API to make accepting payments on the web. Be sure to add your own unique API keys.
 - Support for Friendly IDs thanks to the handy [friendly_id](https://github.com/norman/friendly_id) gem. Note that you'll still need to do some work inside your models for this to work. This template installs the gem and runs the associated generator.
 - Optional Foreman support. Run `.bin/dev` to kick off rails and Tailwind processes. Foreman needs to be installed as a global gem on your system for this to work. i.e. `gem install foreman`
 - Custom view helper defaults for basic button and form elements.
